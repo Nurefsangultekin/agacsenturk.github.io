@@ -118,6 +118,17 @@
 
         footer .container > div { flex-direction: column !important; gap: 20px; }
         footer .container > div > div { flex: 1 1 auto !important; width: 100%; }
+
+        /* Chatbot mobil düzeni */
+        .chatbot-wrap { right: 12px; bottom: 12px; }
+        .chatbot-fab { width: 48px; height: 48px; }
+        .chatbot-bubble { max-width: calc(100vw - 96px); font-size: 13px; padding: 12px; }
+        .chatbot-msgs { max-height: 160px; }
+        .chatbot-send { padding: 8px 10px; }
+
+        /* Hızlı randevu mobil düzeni */
+        #randevuForm { grid-template-columns: 1fr !important; gap: 10px !important; padding: 16px !important; }
+        #randevuForm button { width: 100%; }
       }
       /* Chatbot */
       .chatbot-wrap { position: fixed; right: 20px; bottom: 20px; z-index: 9999; display: flex; align-items: flex-end; gap: 10px; }
