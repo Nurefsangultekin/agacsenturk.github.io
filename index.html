@@ -149,7 +149,7 @@
       .chatbot-chip { background: rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); color:#E5E7EB; padding:6px 10px; border-radius:999px; cursor:pointer; font-size:12px }
       .chatbot-close { position:absolute; top:-8px; right:-8px; background:#fff; color:#111; border:0; width:20px; height:20px; border-radius:50%; cursor:pointer; box-shadow:0 2px 6px rgba(0,0,0,.2) }
       .chatbot-fab { width: 56px; height: 56px; border-radius: 50%; border: 2px solid #fff; background: #0b0b0b; display: grid; place-items:center; box-shadow: 0 8px 20px rgba(0,0,0,.35); cursor: pointer; padding:0; overflow:hidden }
-      .chatbot-fab img { width:100%; height:100%; object-fit: contain; border-radius: 50%; display:block }
+      .chatbot-fab img { width:100%; height:100%; object-fit: cover; border-radius: 50%; display:block }
       .chatbot-initials { display:none; width:100%; height:100%; border-radius:50%; background:#111827; color:#fff; font-weight:700; font-size:12px; letter-spacing:.5px; align-items:center; justify-content:center }
       @media (max-width:480px){ .chatbot-bubble{ max-width:220px; font-size:13px } }
       /* Çok küçük ekranlar (<=480px) */
@@ -222,7 +222,7 @@
           <h1 style="font-size:42px;font-weight:800">AĞAÇ & ŞENTÜRK LAW OFFICE</h1>
           <p class="muted" style="color:#E5E7EB;margin-top:12px">Kurumsal, güvenilir ve sonuç odaklı hukuki çözüm ortağınız</p>
           <div style="display:flex;justify-content:center;margin-top:28px">
-            <a href="#iletisim" class="btn btn-primary">Ücretsiz Danışmanlık</a>
+            <a href="#iletisim" class="btn btn-primary">Hukuki Danışmanlık</a>
           </div>
         </div>
       </section>
@@ -288,22 +288,22 @@
       </section>
 
       
-      <section id="blogs" style="background:var(--darkblue);color:var(--white);padding:80px 0">
+      <section id="blogs" style="background:var(--darkblue);color:var(--white);padding:80px 0; overflow:hidden">
         <div class="container">
           <h2 style="font-size:38px;font-weight:800;color:#fff;margin-bottom:24px;text-align:center;letter-spacing:0.5px">Blogs</h2>
           <p style="text-align:center;max-width:800px;margin:0 auto 40px;color:#E5E7EB;font-size:16px;line-height:1.6">Güncel hukuki gelişmeler, içgörüler ve bültenler.</p>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:20px">
-            <article style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:20px">
+          <div class="blogs-grid" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:20px">
+            <article class="blog-card" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:20px;min-width:0">
               <h3 style="margin:0 0 10px;font-size:20px;color:#fff">Ticaret Hukukunda Güncel Değişiklikler</h3>
               <p style="margin:0 0 14px;color:#D1D5DB;line-height:1.7">Şirket birleşmeleri ve sözleşme yönetiminde son düzenlemelerin kısa özeti.</p>
               <a href="#" style="color:#BBD0FF;text-decoration:none">Devamını oku</a>
             </article>
-            <article style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:20px">
+            <article class="blog-card" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:20px;min-width:0">
               <h3 style="margin:0 0 10px;font-size:20px;color:#fff">KVKK ve GDPR Uyum Rehberi</h3>
               <p style="margin:0 0 14px;color:#D1D5DB;line-height:1.7">Veri işleme süreçlerinde dikkat edilmesi gereken başlıklar.</p>
               <a href="#" style="color:#BBD0FF;text-decoration:none">Devamını oku</a>
             </article>
-            <article style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:20px">
+            <article class="blog-card" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:20px;min-width:0">
               <h3 style="margin:0 0 10px;font-size:20px;color:#fff">İş Hukukunda Yargı İçtihatları</h3>
               <p style="margin:0 0 14px;color:#D1D5DB;line-height:1.7">Son dönemde öne çıkan kararların kısa analizi.</p>
               <a href="#" style="color:#BBD0FF;text-decoration:none">Devamını oku</a>
