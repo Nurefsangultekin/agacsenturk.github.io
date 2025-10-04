@@ -16,7 +16,8 @@ const Index = () => {
     if (!ogUrlMeta) {
       ogUrlMeta = document.createElement("meta");
       ogUrlMeta.setAttribute("property", "og:url");
-      document.head.appendChild(ogUrlMeta);
+      document.head.
+      endChild(ogUrlMeta);
     }
     ogUrlMeta.setAttribute("content", canonicalUrl);
   }, []);

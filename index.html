@@ -21,6 +21,7 @@
         --metallic: #A7A9AC;
         --light: #F3F4F6;
         --white: #ffffff;
+        --darkblue: #000814;
       }
       * { box-sizing: border-box; }
       html {
@@ -50,9 +51,12 @@
         border-bottom: 1px solid var(--metallic);
       }
       header .row { height: 64px; display: flex; align-items: center; justify-content: space-between; }
+      .menu-btn { display:none; background:transparent; border:0; padding:8px; cursor:pointer; }
+      .menu-btn span { display:block; width:22px; height:2px; background:#222; margin:5px 0; transition:.2s; }
       header nav a { text-decoration: none; color: var(--black); margin-left: 18px; font-size: 14px; font-weight: 600; }
       header nav a.burgundy { color: var(--burgundy); }
       header nav a.contact-btn { background: var(--black); color: var(--white); padding: 8px 16px; border-radius: 20px; }
+      header nav a.blogs-btn { background: var(--darkblue); color: var(--white); padding: 8px 16px; border-radius: 20px; margin-left: 18px; }
       .hero { 
         background: linear-gradient(135deg, rgba(11,11,11,.65) 0%, rgba(122,0,31,.55) 50%, rgba(11,11,11,.65) 100%); 
         color: var(--white);
@@ -79,6 +83,81 @@
       footer { background: var(--black); color: var(--white); }
       .logo { height: 36px; object-fit: contain; mix-blend-mode: multiply; }
       .footer-logo { height: 28px; object-fit: contain; mix-blend-mode: multiply; filter: grayscale(20%); }
+      /* Bölüm ayırıcı */
+      .section-sep { height:2px; background: linear-gradient(to right, rgba(0,0,0,0), rgba(122,0,31,.35), rgba(0,0,0,0)); max-width: 1100px; margin: 0 auto 24px; border-radius:2px }
+
+      /* Mobil düzenler */
+      @media (max-width: 768px) {
+        .container { padding: 0 12px; }
+        header .row { height: 56px; }
+        .menu-btn { display:inline-block; }
+        header nav { 
+          position: fixed; 
+          top: 56px; 
+          left: 0; 
+          right: 0; 
+          background: var(--white); 
+          border-bottom: 1px solid var(--metallic); 
+          display: none; 
+          flex-direction: column; 
+          padding: 12px 16px; 
+        }
+        header nav.show { display:flex; }
+        header nav a { margin: 10px 0; padding: 8px 0; }
+        header nav a.contact-btn { align-self:flex-start; border-radius: 8px; }
+
+        .hero { min-height: 78vh; }
+        .hero .wrap h1 { font-size: 28px !important; line-height: 1.25; }
+        .hero .wrap p { font-size: 14px !important; }
+        .btn { padding: 10px 16px; }
+
+        section { padding: 40px 0; }
+        .grid-3 { grid-template-columns: 1fr; }
+        #calisma-alanlari .container > div[style^="display:grid"] { grid-template-columns: 1fr !important; }
+        #iletisim .container > div[style^="display:grid"] { grid-template-columns: 1fr !important; }
+
+        footer .container > div { flex-direction: column !important; gap: 20px; }
+        footer .container > div > div { flex: 1 1 auto !important; width: 100%; }
+      }
+      /* Chatbot */
+      .chatbot-wrap { position: fixed; right: 20px; bottom: 20px; z-index: 9999; display: flex; align-items: flex-end; gap: 10px; }
+      .chatbot-bubble { background: var(--darkblue); color: #fff; padding: 14px 16px; border-radius: 12px 12px 12px 0; max-width: 320px; box-shadow: 0 10px 24px rgba(0,0,0,.25); font-size: 14px; line-height: 1.5; }
+      .chatbot-bubble strong { display:block; margin-bottom:6px; font-size: 13px; letter-spacing:.2px; opacity:.9 }
+      .chatbot-msgs { max-height: 220px; overflow:auto; padding-right: 4px; scrollbar-color: rgba(255,255,255,.25) transparent; }
+      .chatbot-msgs::-webkit-scrollbar { width: 8px; }
+      .chatbot-msgs::-webkit-scrollbar-track { background: rgba(255,255,255,.06); border-radius: 8px; }
+      .chatbot-msgs::-webkit-scrollbar-thumb { background: rgba(255,255,255,.25); border-radius: 8px; }
+      .chatbot-msgs::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,.35); }
+      .chatbot-msg { margin: 0 0 10px; color:#E5E7EB; white-space: pre-line; }
+      .chatbot-reply { background: rgba(255,255,255,.07); padding:8px 10px; border-radius: 8px; margin: 6px 0; }
+      .chatbot-user { background: rgba(255,255,255,.14); padding:8px 10px; border-radius: 8px; margin: 6px 0; text-align: right; color:#FFF; }
+      .chatbot-form { display:flex; gap:8px; margin-top:8px }
+      .chatbot-input { flex:1; padding:8px 10px; border-radius:8px; border:1px solid rgba(255,255,255,.15); background:rgba(0,0,0,.2); color:#fff; outline:none }
+      .chatbot-send { padding:8px 12px; border-radius:8px; border:0; background:#374151; color:#fff; cursor:pointer }
+      .chatbot-quick { display:flex; flex-wrap:wrap; gap:6px; margin:6px 0 2px }
+      .chatbot-chip { background: rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); color:#E5E7EB; padding:6px 10px; border-radius:999px; cursor:pointer; font-size:12px }
+      .chatbot-close { position:absolute; top:-8px; right:-8px; background:#fff; color:#111; border:0; width:20px; height:20px; border-radius:50%; cursor:pointer; box-shadow:0 2px 6px rgba(0,0,0,.2) }
+      .chatbot-fab { width: 56px; height: 56px; border-radius: 50%; border: 2px solid #fff; background: #0b0b0b; display: grid; place-items:center; box-shadow: 0 8px 20px rgba(0,0,0,.35); cursor: pointer; padding:0; overflow:hidden }
+      .chatbot-fab img { width:100%; height:100%; object-fit: contain; border-radius: 50%; display:block }
+      .chatbot-initials { display:none; width:100%; height:100%; border-radius:50%; background:#111827; color:#fff; font-weight:700; font-size:12px; letter-spacing:.5px; align-items:center; justify-content:center }
+      @media (max-width:480px){ .chatbot-bubble{ max-width:220px; font-size:13px } }
+      /* Çok küçük ekranlar (<=480px) */
+      @media (max-width: 480px) {
+        .logo { height: 44px; }
+        .menu-btn span { width: 20px; }
+        section { padding: 28px 0; }
+        .hero { min-height: 70vh; }
+        .hero .wrap h1 { font-size: 24px !important; }
+        .btn { padding: 9px 14px; font-size: 14px; }
+      }
+      /* Tablet ve üstü için ufak iyileştirme */
+      @media (min-width: 1024px) {
+        #calisma-alanlari .container > div[style^="display:grid"] { grid-template-columns: repeat(3, 1fr) !important; }
+      }
+      /* Hareket azalt tercihi */
+      @media (prefers-reduced-motion: reduce) {
+        * { transition: none !important; animation: none !important; }
+      }
     </style>
     <script type="application/ld+json">
       {
@@ -107,11 +186,15 @@
             <img src="assets/logo.png" alt="AĞAÇ & ŞENTÜRK LAW OFFICE" style="height:50px;width:auto;object-fit:contain" />
           </a>
         </div>
+        <button class="menu-btn" aria-label="Menüyü aç/kapat">
+          <span></span><span></span><span></span>
+        </button>
         <nav>
           <a href="#hakkimizda" class="burgundy">Hakkımızda</a>
           <a href="#calisma-alanlari">Çalışma Alanları</a>
           <a href="avukatlar.html">Avukatlarımız</a>
           <a href="#kariyer">Kariyer</a>
+          <a href="#blogs" class="blogs-btn">Blogs</a>
           <a href="#iletisim" class="contact-btn">İletişim</a>
         </nav>
       </div>
@@ -194,6 +277,29 @@
       </section>
 
       
+      <section id="blogs" style="background:var(--darkblue);color:var(--white);padding:80px 0">
+        <div class="container">
+          <h2 style="font-size:38px;font-weight:800;color:#fff;margin-bottom:24px;text-align:center;letter-spacing:0.5px">Blogs</h2>
+          <p style="text-align:center;max-width:800px;margin:0 auto 40px;color:#E5E7EB;font-size:16px;line-height:1.6">Güncel hukuki gelişmeler, içgörüler ve bültenler.</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:20px">
+            <article style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:20px">
+              <h3 style="margin:0 0 10px;font-size:20px;color:#fff">Ticaret Hukukunda Güncel Değişiklikler</h3>
+              <p style="margin:0 0 14px;color:#D1D5DB;line-height:1.7">Şirket birleşmeleri ve sözleşme yönetiminde son düzenlemelerin kısa özeti.</p>
+              <a href="#" style="color:#BBD0FF;text-decoration:none">Devamını oku</a>
+            </article>
+            <article style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:20px">
+              <h3 style="margin:0 0 10px;font-size:20px;color:#fff">KVKK ve GDPR Uyum Rehberi</h3>
+              <p style="margin:0 0 14px;color:#D1D5DB;line-height:1.7">Veri işleme süreçlerinde dikkat edilmesi gereken başlıklar.</p>
+              <a href="#" style="color:#BBD0FF;text-decoration:none">Devamını oku</a>
+            </article>
+            <article style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:20px">
+              <h3 style="margin:0 0 10px;font-size:20px;color:#fff">İş Hukukunda Yargı İçtihatları</h3>
+              <p style="margin:0 0 14px;color:#D1D5DB;line-height:1.7">Son dönemde öne çıkan kararların kısa analizi.</p>
+              <a href="#" style="color:#BBD0FF;text-decoration:none">Devamını oku</a>
+            </article>
+          </div>
+        </div>
+      </section>
 
       <section id="kariyer" style="background:linear-gradient(135deg, rgba(11,11,11,.8) 0%, rgba(122,0,31,.7) 60%, rgba(11,11,11,.8) 100%);color:var(--white);position:relative">
         <div class="container">
@@ -272,6 +378,41 @@
           </div>
         </div>
       </section>
+
+      <!-- Hızlı Randevu - İletişimin hemen altında -->
+      <section id="hizli-randevu" style="padding:60px 0;background:linear-gradient(to bottom, #f8f9fa, #fff)">
+        <div class="container">
+          <div class="section-sep" aria-hidden="true"></div>
+          <h2 style="font-size:32px;font-weight:800;color:var(--burgundy);margin-bottom:18px;text-align:center">Hızlı Randevu</h2>
+          <p style="text-align:center;max-width:720px;margin:0 auto 28px;color:#666">Aşağıdaki formu doldurun; talebiniz <strong>agacsenturk@gmail.com</strong> adresimize iletilecek ve en kısa sürede sizi arayacağız.</p>
+          <form id="randevuForm" style="max-width:760px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:14px;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:12px;padding:20px;box-shadow:0 6px 20px rgba(0,0,0,.05)">
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <label for="ad" style="font-weight:600;color:#333">Ad</label>
+              <input id="ad" name="Ad" type="text" required placeholder="Adınız" style="padding:10px;border:1px solid #e5e7eb;border-radius:8px" />
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <label for="soyad" style="font-weight:600;color:#333">Soyad</label>
+              <input id="soyad" name="Soyad" type="text" required placeholder="Soyadınız" style="padding:10px;border:1px solid #e5e7eb;border-radius:8px" />
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <label for="telefon" style="font-weight:600;color:#333">Telefon</label>
+              <input id="telefon" name="Telefon" type="tel" required placeholder="05xx xxx xx xx" style="padding:10px;border:1px solid #e5e7eb;border-radius:8px" />
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <label for="tarih" style="font-weight:600;color:#333">Tercih Edilen Tarih</label>
+              <input id="tarih" name="Tarih" type="date" required style="padding:10px;border:1px solid #e5e7eb;border-radius:8px" />
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <label for="saat" style="font-weight:600;color:#333">Tercih Edilen Saat</label>
+              <input id="saat" name="Saat" type="time" required style="padding:10px;border:1px solid #e5e7eb;border-radius:8px" />
+            </div>
+            <div style="display:flex;align-items:flex-end;gap:6px">
+              <button id="randevuGonder" type="submit" class="btn" style="background:var(--burgundy);color:#fff;border:none;padding:12px 18px;border-radius:8px;font-weight:700">Gönder</button>
+            </div>
+            <p id="randevuSonuc" style="grid-column:1/-1;margin:6px 0 0;color:#166534;display:none">Talebiniz alınmıştır, en kısa sürede sizinle iletişime geçeceğiz.</p>
+          </form>
+        </div>
+      </section>
     </main>
 
     <footer style="background:linear-gradient(135deg, rgba(11,11,11,.65) 0%, rgba(122,0,31,.55) 50%, rgba(11,11,11,.65) 100%);padding:40px 0;color:var(--white);position:relative;border-top:1px solid rgba(255,255,255,0.1)">
@@ -309,10 +450,35 @@
           </div>
         </div>
         <div style="text-align:center;padding-top:20px;border-top:1px solid rgba(255,255,255,0.1)">
-          <p style="color:var(--white);opacity:0.8">© <span id="y"></span> Ağaç & Şentürk Law Office. Tüm hakları saklıdır.</p>
+          <p style="color:var(--white);opacity:0.85;margin:0 0 6px">© <span id="y"></span> Ağaç & Şentürk Law Office. Tüm hakları saklıdır.</p>
+          <p style="color:var(--white);opacity:0.6;font-size:14px;margin:0">Bu websitesi NG Technology tarafından hazırlanmıştır.</p>
         </div>
       </div>
     </footer>
+
+    <!-- Chatbot - NG -->
+    <div class="chatbot-wrap" id="ng-wrap" style="display:flex">
+      <div class="chatbot-bubble" id="ng-bubble">
+        <button class="chatbot-close" aria-label="Kapat" onclick="document.getElementById('ng-bubble').style.display='none'">×</button>
+        <strong>Av. NG</strong>
+        <div class="chatbot-msgs" id="ng-msgs">
+          <p class="chatbot-msg chatbot-reply">Merhaba! Ben Av. NG, size destek olmak amacıyla görevli bir asistanım. Size nasıl yardımcı olabilirim?</p>
+        </div>
+        <div class="chatbot-quick" id="ng-quick">
+          <button type="button" class="chatbot-chip" data-msg="Randevu almak istiyorum">Randevu</button>
+          <button type="button" class="chatbot-chip" data-msg="Telefon ve e-posta bilginiz nedir?">İletişim</button>
+          <button type="button" class="chatbot-chip" data-msg="Adresinizi paylaşır mısınız?">Adres</button>
+        </div>
+        <form class="chatbot-form" id="ng-form">
+          <input class="chatbot-input" id="ng-input" type="text" placeholder="Mesajınızı yazın..." autocomplete="off" />
+          <button class="chatbot-send" type="submit">Gönder</button>
+        </form>
+      </div>
+      <button class="chatbot-fab" id="ng-fab" aria-label="Sohbeti aç/kapat">
+        <img src="assets/ASG.png" alt="Av. NG" onerror="this.style.display='none'; this.previousElementSibling && (this.previousElementSibling.style.display='flex')">
+        <span class="chatbot-initials">NG</span>
+      </button>
+    </div>
 
     <script>
       document.getElementById('y').textContent = new Date().getFullYear();
@@ -326,6 +492,101 @@
           header.classList.remove('scrolled');
         }
       });
+
+      // Mobile menu toggle
+      const menuBtn = document.querySelector('.menu-btn');
+      const nav = document.querySelector('header nav');
+      menuBtn.addEventListener('click', () => {
+        nav.classList.toggle('show');
+      });
+
+      // Chatbot toggle
+      const bubble = document.getElementById('ng-bubble');
+      const fab = document.getElementById('ng-fab');
+      fab.addEventListener('click', ()=>{
+        bubble.style.display = (bubble.style.display === 'none') ? 'block' : 'none';
+      });
+
+      // Simple auto-reply form
+      const form = document.getElementById('ng-form');
+      const input = document.getElementById('ng-input');
+      const msgs = document.getElementById('ng-msgs');
+      const AUTO_REPLY = 'Bu konuda avukatlarımız ile iletişime geçmenizi öneriyorum.\nİletişim için: Telefon: 0545 440 25 01 - E-posta: info@agacsenturk.com\nVeya tüm hukuki sorunlarınıza çözüm bulmak amacıyla ofisimize Hürriyet, Dr. Cemil Bengü Cd. No:34 K:5, D:10,\n34403 Kağıthane/İstanbul adresinden ulaşabilirsiniz.';
+      const MAPS_URL = 'https://maps.google.com/?q=Hürriyet,+Dr.+Cemil+Bengü+Cd.+No:34+K:5,+D:10,+34403+Kağıthane/İstanbul';
+      const MAP_REPLY = 'Adresimiz: Hürriyet, Dr. Cemil Bengü Cd. No:34 K:5, D:10, 34403 Kağıthane/İstanbul\n<a href="'+MAPS_URL+'" target="_blank" rel="noopener">Google Haritalar\'da Aç</a>';
+      const CONTACT_REPLY = 'Telefon: 0545 440 25 01\nE-posta: info@agacsenturk.com';
+      const HOURS_REPLY = 'Çalışma saatlerimiz: 09.00 - 18.00 saatleri arasındadır.';
+      const WEEKEND_REPLY = 'Cumartesi günleri hukuki hizmet verebilmekteyiz.';
+      function sendMessage(val){
+        if(!val) return;
+        const user = document.createElement('p');
+        user.className = 'chatbot-msg chatbot-user';
+        user.textContent = val;
+        msgs.appendChild(user);
+        // Otomatik yanıt
+        const reply = document.createElement('p');
+        reply.className = 'chatbot-msg chatbot-reply';
+        if(/hafta sonu|haftasonu|pazar|cumartesi aç|cumartesi açık/i.test(val)) {
+          reply.textContent = WEEKEND_REPLY;
+        } else if(/çalışma saat|mesai/i.test(val)) {
+          reply.textContent = HOURS_REPLY;
+        } else if(/iletişim|randevu/i.test(val)) {
+          reply.textContent = CONTACT_REPLY;
+        } else if(/adres/i.test(val)) {
+          reply.innerHTML = MAP_REPLY;
+        } else {
+          reply.innerHTML = AUTO_REPLY;
+        }
+        msgs.appendChild(reply);
+        msgs.scrollTop = msgs.scrollHeight;
+      }
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        const val = input.value.trim();
+        input.value='';
+        sendMessage(val);
+      });
+      document.querySelectorAll('#ng-quick .chatbot-chip').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          sendMessage(this.getAttribute('data-msg'));
+        });
+      });
+
+      // İletişim butonuna basınca sohbet balonunda iletişim bilgilerini göster
+      function showContactReply(){
+        bubble.style.display = 'block';
+        const reply = document.createElement('p');
+        reply.className = 'chatbot-msg chatbot-reply';
+        reply.textContent = CONTACT_REPLY;
+        msgs.appendChild(reply);
+        msgs.scrollTop = msgs.scrollHeight;
+      }
+      document.querySelectorAll('.contact-btn').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          showContactReply();
+        });
+      });
+
+      // Hızlı Randevu formu — e-posta ile gönderim (mailto)
+      const rForm = document.getElementById('randevuForm');
+      if (rForm) {
+        rForm.addEventListener('submit', function(e){
+          e.preventDefault();
+          const ad = document.getElementById('ad').value.trim();
+          const soyad = document.getElementById('soyad').value.trim();
+          const tel = document.getElementById('telefon').value.trim();
+          const tarih = document.getElementById('tarih').value;
+          const saat = document.getElementById('saat').value;
+          const konu = encodeURIComponent('Hızlı Randevu Talebi');
+          const icerik = encodeURIComponent(
+            `Ad: ${ad}\nSoyad: ${soyad}\nTelefon: ${tel}\nTercih edilen tarih: ${tarih}\nTercih edilen saat: ${saat}`
+          );
+          // Kullanıcının mail istemcisini açarak e-posta oluşturur
+          window.location.href = `mailto:agacsenturk@gmail.com?subject=${konu}&body=${icerik}`;
+          const sonuc = document.getElementById('randevuSonuc');
+          if (sonuc) { sonuc.style.display = 'block'; }
+        });
+      }
     </script>
   </body>
   </html>

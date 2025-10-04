@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://use.typekit.net/[your-kit-code].css">
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Trajan+Pro:wght@400;600&display=swap');
-      :root { --burgundy:#7A001F; --black:#0B0B0B; --metallic:#A7A9AC; --light:#F3F4F6; --white:#fff; }
+      :root { --burgundy:#7A001F; --black:#0B0B0B; --metallic:#A7A9AC; --light:#F3F4F6; --white:#fff; --darkblue:#000814 }
       body { 
         margin:0; 
         font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; 
@@ -35,6 +35,7 @@
       header nav a { text-decoration:none; color:var(--black); margin-left:18px; font-size:14px; font-weight:600; }
       header nav a.burgundy { color: var(--burgundy); }
       header nav a.contact-btn { background: var(--black); color: var(--white); padding: 8px 16px; border-radius: 20px; }
+      header nav a.blogs-btn { background: var(--darkblue); color: var(--white); padding: 8px 16px; border-radius: 20px; }
       .logo { height: 36px; object-fit: contain; mix-blend-mode: multiply; }
       h1,h2 { letter-spacing:.5px }
       section { padding: 48px 0; }
@@ -43,6 +44,25 @@
       .muted { color:#4B5563 }
       footer { background: var(--black); color: var(--white); }
       .footer-logo { height: 28px; object-fit: contain; mix-blend-mode: multiply; filter: grayscale(20%); }
+      /* Chatbot */
+      .chatbot-wrap { position: fixed; right: 20px; bottom: 20px; z-index: 9999; display: flex; align-items: flex-end; gap: 10px; }
+      .chatbot-bubble { background: var(--darkblue); color: #fff; padding: 14px 16px; border-radius: 12px 12px 12px 0; max-width: 320px; box-shadow: 0 10px 24px rgba(0,0,0,.25); font-size: 14px; line-height: 1.5; }
+      .chatbot-bubble strong { display:block; margin-bottom:6px; font-size: 13px; letter-spacing:.2px; opacity:.9 }
+      .chatbot-msgs { max-height: 220px; overflow:auto; padding-right: 4px; scrollbar-color: rgba(255,255,255,.25) transparent; }
+      .chatbot-msgs::-webkit-scrollbar { width: 8px; }
+      .chatbot-msgs::-webkit-scrollbar-track { background: rgba(255,255,255,.06); border-radius: 8px; }
+      .chatbot-msgs::-webkit-scrollbar-thumb { background: rgba(255,255,255,.25); border-radius: 8px; }
+      .chatbot-msgs::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,.35); }
+      .chatbot-msg { margin: 0 0 10px; color:#E5E7EB; white-space: pre-line; }
+      .chatbot-reply { background: rgba(255,255,255,.07); padding:8px 10px; border-radius: 8px; margin: 6px 0; }
+      .chatbot-user { background: rgba(255,255,255,.14); padding:8px 10px; border-radius: 8px; margin: 6px 0; text-align: right; color:#FFF; }
+      .chatbot-fab { width: 56px; height: 56px; border-radius: 50%; border: 2px solid #fff; background: #0b0b0b; display: grid; place-items:center; box-shadow: 0 8px 20px rgba(0,0,0,.35); cursor: pointer; padding:0; overflow:hidden }
+      .chatbot-fab img { width:100%; height:100%; object-fit: contain; border-radius: 50%; display:block }
+      .chatbot-initials { display:none; width:100%; height:100%; border-radius:50%; background:#111827; color:#fff; font-weight:700; font-size:12px; letter-spacing:.5px; align-items:center; justify-content:center }
+      .chatbot-close { position:absolute; top:-8px; right:-8px; background:#fff; color:#111; border:0; width:20px; height:20px; border-radius:50%; cursor:pointer; box-shadow:0 2px 6px rgba(0,0,0,.2) }
+      .chatbot-form { display:flex; gap:8px; margin-top:8px }
+      .chatbot-input { flex:1; padding:8px 10px; border-radius:8px; border:1px solid rgba(255,255,255,.15); background:rgba(0,0,0,.2); color:#fff; outline:none }
+      .chatbot-send { padding:8px 12px; border-radius:8px; border:0; background:#374151; color:#fff; cursor:pointer }
     </style>
   </head>
   <body>
@@ -58,6 +78,7 @@
           <a href="index.html#calisma-alanlari">Çalışma Alanları</a>
           <a href="avukatlar.html">Avukatlarımız</a>
           <a href="index.html#kariyer">Kariyer</a>
+          <a href="index.html#blogs" class="blogs-btn">Blogs</a>
           <a href="index.html#iletisim" class="contact-btn">İletişim</a>
         </nav>
       </div>
@@ -161,11 +182,78 @@
           </div>
         </div>
         <div style="text-align:center;padding-top:20px;border-top:1px solid var(--metallic)">
-          <p style="color:#666">© <span id="y"></span> Ağaç & Şentürk Law Office. Tüm hakları saklıdır.</p>
+          <p style="color:#666;margin:0 0 6px">© <span id="y"></span> Ağaç & Şentürk Law Office. Tüm hakları saklıdır.</p>
+          <p style="color:#666;opacity:0.8;font-size:14px;margin:0">Bu websitesi NG Technology tarafından hazırlanmıştır.</p>
         </div>
       </div>
     </footer>
+    <!-- Chatbot - Av. NG -->
+    <div class="chatbot-wrap" id="ng-wrap" style="display:flex">
+      <div class="chatbot-bubble" id="ng-bubble">
+        <button class="chatbot-close" aria-label="Kapat" onclick="document.getElementById('ng-bubble').style.display='none'">×</button>
+        <strong>Av. NG</strong>
+        <div class="chatbot-msgs" id="ng-msgs">
+          <p class="chatbot-msg chatbot-reply">Merhaba! Ben Av. NG, size destek olmak amacıyla görevli bir asistanım. Size nasıl yardımcı olabilirim?</p>
+        </div>
+        <div class="chatbot-quick" id="ng-quick">
+          <button type="button" class="chatbot-chip" data-msg="Randevu almak istiyorum">Randevu</button>
+          <button type="button" class="chatbot-chip" data-msg="Telefon ve e-posta bilginiz nedir?">İletişim</button>
+          <button type="button" class="chatbot-chip" data-msg="Adresinizi paylaşır mısınız?">Adres</button>
+        </div>
+        <form class="chatbot-form" id="ng-form">
+          <input class="chatbot-input" id="ng-input" type="text" placeholder="Mesajınızı yazın..." autocomplete="off" />
+          <button class="chatbot-send" type="submit">Gönder</button>
+        </form>
+      </div>
+      <button class="chatbot-fab" id="ng-fab" aria-label="Sohbeti aç/kapat">
+        <img src="assets/ASG.png" alt="Av. NG" onerror="this.style.display='none'; this.previousElementSibling && (this.previousElementSibling.style.display='flex')">
+        <span class="chatbot-initials">NG</span>
+      </button>
+    </div>
     <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+    <script>
+      const bubble = document.getElementById('ng-bubble');
+      const fab = document.getElementById('ng-fab');
+      fab.addEventListener('click', ()=>{
+        bubble.style.display = (bubble.style.display === 'none') ? 'block' : 'none';
+      });
+      const form = document.getElementById('ng-form');
+      const input = document.getElementById('ng-input');
+      const msgs = document.getElementById('ng-msgs');
+      const AUTO_REPLY = 'Bu konuda avukatlarımız ile iletişime geçmenizi öneriyorum.\nİletişim için: Telefon: 0545 440 25 01 - E-posta: info@agacsenturk.com\nVeya tüm hukuki sorunlarınıza çözüm bulmak amacıyla ofisimize Hürriyet, Dr. Cemil Bengü Cd. No:34 K:5, D:10,\n34403 Kağıthane/İstanbul adresinden ulaşabilirsiniz.';
+      const MAPS_URL = 'https://maps.google.com/?q=Hürriyet,+Dr.+Cemil+Bengü+Cd.+No:34+K:5,+D:10,+34403+Kağıthane/İstanbul';
+      const MAP_REPLY = 'Adresimiz: Hürriyet, Dr. Cemil Bengü Cd. No:34 K:5, D:10, 34403 Kağıthane/İstanbul\n<a href="'+MAPS_URL+'" target="_blank" rel="noopener">Google Haritalar\'da Aç</a>';
+      const CONTACT_REPLY = 'Telefon: 0545 440 25 01\nE-posta: info@agacsenturk.com';
+      function sendMessage(val){
+        if(!val) return;
+        const user = document.createElement('p');
+        user.className = 'chatbot-msg chatbot-user';
+        user.textContent = val;
+        msgs.appendChild(user);
+        const reply = document.createElement('p');
+        reply.className = 'chatbot-msg chatbot-reply';
+        if(/iletişim|randevu/i.test(val)) {
+          reply.textContent = CONTACT_REPLY;
+        } else if(/adres/i.test(val)) {
+          reply.innerHTML = MAP_REPLY;
+        } else {
+          reply.textContent = AUTO_REPLY;
+        }
+        msgs.appendChild(reply);
+        msgs.scrollTop = msgs.scrollHeight;
+      }
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        const val = input.value.trim();
+        input.value='';
+        sendMessage(val);
+      });
+      document.querySelectorAll('#ng-quick .chatbot-chip').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          sendMessage(this.getAttribute('data-msg'));
+        });
+      });
+    </script>
   </body>
   </html>
 
