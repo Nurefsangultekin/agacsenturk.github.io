@@ -42,7 +42,7 @@ const Index = () => {
           <nav style={{ display: "flex", gap: 18, fontSize: 14 }}>
             <a href="#hakkimizda" style={{ textDecoration: "none", color: colors.black }}>Hakkımızda</a>
             <a href="#calisma-alanlari" style={{ textDecoration: "none", color: colors.black }}>Çalışma Alanları</a>
-            <a href="#avukatlar" style={{ textDecoration: "none", color: colors.black }}>Avukatlarımız</a>
+            <a href="#avukatlar" style={{ textDecoration: "none", color: colors.black }}>Ekibimiz</a>
             <a href="#kariyer" style={{ textDecoration: "none", color: colors.black }}>Kariyer</a>
             <a href="#iletisim" style={{ textDecoration: "none", color: colors.black }}>İletişim</a>
           </nav>
