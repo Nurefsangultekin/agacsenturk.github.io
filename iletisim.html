@@ -93,7 +93,7 @@
               <div class="card">
                 <h3 style="font-size:18px;font-weight:700;margin-bottom:6px">İletişim</h3>
                 <p class="muted">
-                  Telefon: <a href="tel:+905454402501" style="color:var(--burgundy);text-decoration:none">0545 440 25 01</a><br/>
+                  Telefon: <a href="tel:+905454402501" style="color:var(--burgundy);text-decoration:none">+90 545 440 2501</a><br/>
                   E-posta: <a href="mailto:info@agacsenturk.com" style="color:var(--burgundy);text-decoration:none">info@agacsenturk.com</a>
                 </p>
               </div>
@@ -101,7 +101,7 @@
             
             <div style="margin-top:32px;border-radius:12px;overflow:hidden;height:400px">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3007.5750478496386!2d28.974843!3d41.069821!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab71f13ca6e2f%3A0x84e6d1aa816b5237!2zSMO8cnJpeWV0LCBEci4gQ2VtaWwgQmVuZ8O8IENkLiBObzozNCwgMzQ0MDMgS2HEn8SxdGhhbmUvxLBzdGFuYnVs!5e0!3m2!1str!2str!4v1710101234567!5m2!1str!2str"
+                src="https://www.google.com/maps?q=A%C4%9Fa%C3%A7%20%26%20%C5%9Eent%C3%BCrk%20Law%20Office%2C%20Ka%C4%9F%C4%B1thane%2F%C4%B0stanbul&output=embed"
                 width="100%" 
                 height="100%" 
                 style="border:0" 
@@ -131,7 +131,7 @@
               34403 Kağıthane/İstanbul
             </p>
             <p style="margin:12px 0">
-              <a href="tel:+905454402501" style="color:var(--burgundy);text-decoration:none">0545 440 25 01</a><br/>
+              <a href="tel:+905454402501" style="color:var(--burgundy);text-decoration:none">+90 545 440 2501</a><br/>
               <a href="mailto:info@agacsenturk.com" style="color:var(--burgundy);text-decoration:none">info@agacsenturk.com</a>
             </p>
           </div>
@@ -182,10 +182,10 @@
       const form = document.getElementById('ng-form');
       const input = document.getElementById('ng-input');
       const msgs = document.getElementById('ng-msgs');
-      const AUTO_REPLY = 'Bu konuda avukatlarımız ile iletişime geçmenizi öneriyorum.\nİletişim için: Telefon: 0545 440 25 01 - E-posta: info@agacsenturk.com\nVeya tüm hukuki sorunlarınıza çözüm bulmak amacıyla ofisimize Hürriyet, Dr. Cemil Bengü Cd. No:34 K:5, D:10,\n34403 Kağıthane/İstanbul adresinden ulaşabilirsiniz.';
-      const MAPS_URL = 'https://maps.google.com/?q=Hürriyet,+Dr.+Cemil+Bengü+Cd.+No:34+K:5,+D:10,+34403+Kağıthane/İstanbul';
+      const AUTO_REPLY = 'Bu konuda avukatlarımız ile iletişime geçmenizi öneriyorum.\nİletişim için: Telefon: +90 545 440 2501 - E-posta: info@agacsenturk.com\nVeya tüm hukuki sorunlarınıza çözüm bulmak amacıyla ofisimize Hürriyet, Dr. Cemil Bengü Cd. No:34 K:5, D:10,\n34403 Kağıthane/İstanbul adresinden ulaşabilirsiniz.';
+      const MAPS_URL = 'https://www.google.com/maps/search/?api=1&query=A%C4%9Fa%C3%A7%20%26%20%C5%9Eent%C3%BCrk%20Law%20Office%2C%20Ka%C4%9F%C4%B1thane%2F%C4%B0stanbul';
       const MAP_REPLY = 'Adresimiz: Hürriyet, Dr. Cemil Bengü Cd. No:34 K:5, D:10, 34403 Kağıthane/İstanbul\n<a href="'+MAPS_URL+'" target="_blank" rel="noopener">Google Haritalar\'da Aç</a>';
-      const CONTACT_REPLY = 'Telefon: 0545 440 25 01\nE-posta: info@agacsenturk.com';
+      const CONTACT_REPLY = 'Telefon: +90 545 440 2501\nE-posta: info@agacsenturk.com';
       function sendMessage(val){
         if(!val) return;
         const user = document.createElement('p');

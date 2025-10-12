@@ -191,7 +191,7 @@ const Index = () => {
             <div style={{ border: `1px solid ${colors.metallicGray}`, borderRadius: 10, padding: 20 }}>
               <h3 style={{ fontSize: 18, fontWeight: 700, marginBottom: 6 }}>İletişim</h3>
               <p style={{ color: "#4B5563", lineHeight: 1.7 }}>
-                Telefon: <a href="tel:+905454402501" style={{ color: colors.burgundy, fontWeight: 600 }}>0545 440 25 01</a><br/>
+                Telefon: <a href="tel:+905454402501" style={{ color: colors.burgundy, fontWeight: 600 }}>+90 545 440 2501</a><br/>
                 E-posta: <a href="mailto:info@agacsenturk.com" style={{ color: colors.burgundy, fontWeight: 600 }}>info@agacsenturk.com</a>
               </p>
             </div>
